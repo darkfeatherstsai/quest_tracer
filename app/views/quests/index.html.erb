@@ -1,0 +1,32 @@
+<h1>任務清單</h1>
+
+<%= link_to "新增任務", new_quest_path %>
+
+<table>
+  <thead>
+    <tr>
+      <td>標題</td>
+      <td>內容</td>
+      <td>開始日期</td>
+      <td>結束日期</td>
+      <td>優先度</td>
+      <td>狀態</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @quests.each do |quest| %>
+    <tr>
+      <td><%= quest.title %></td>
+      <td><%= quest.content %></td>
+      <td><%= quest.start_date %></td>
+      <td><%= quest.end_date %></td>
+      <td><%= quest.priority %></td>
+      <td><%= quest.state %></td>
+      <td>
+        <%= link_to "任務編輯", edit_quest_path(quest) %>
+        <%= link_to "任務刪除", quest_path(quest), method: "delete", data: { confirm: "確認刪除" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
