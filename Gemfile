@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #postgresql
 gem 'pg'
+#多國語言翻譯包
+gem 'rails-i18n'
 
 
 
