@@ -44,6 +44,7 @@ gem 'rails-i18n'
 gem 'ransack'
 #分頁用
 gem "will_paginate"
+gem 'kaminari'
 
 
 

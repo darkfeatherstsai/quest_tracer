@@ -3,7 +3,8 @@ class QuestsController < ApplicationController
 
   def index
     @q = Quest.ransack(params[:q])
-    @quests = @q.result
+    quests = @q.result
+    @quests = quests.paginate(:page => params[:page] , :per_page => 15)
   end
 
   def new

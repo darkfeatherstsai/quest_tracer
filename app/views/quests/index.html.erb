@@ -9,8 +9,9 @@
 <%= link_to "新增任務", new_quest_path %>
 <hr>
 <h2><%= sort_link(@q, :start_date, '依開始時間排序', default_order: :desc) %>
-     <%= sort_link(@q, :end_date, '依結束時間排序', default_order: :desc) %>  
+     <%= sort_link(@q, :end_date, '依結束時間排序', default_order: :desc) %>
       <%= sort_link(@q, :priority, '依優先度排序', default_order: :desc) %></h2>
+<%= paginate @quests %>
 <table>
   <thead>
     <tr>
@@ -39,3 +40,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @quests %>
