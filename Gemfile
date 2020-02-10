@@ -40,6 +40,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg'
 #多國語言翻譯包
 gem 'rails-i18n'
+#排序及搜尋
+gem 'ransack'
+#分頁用
+gem "will_paginate"
 
 
 

@@ -2,7 +2,8 @@ class QuestsController < ApplicationController
   before_action :find_quest, only: [:edit, :update, :destroy]
 
   def index
-    @quests = Quest.all.order(created_at: :desc)
+    @q = Quest.ransack(params[:q])
+    @quests = @q.result
   end
 
   def new

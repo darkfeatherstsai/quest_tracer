@@ -1,4 +1,9 @@
 <%= form_for(quest) do |f| %>
+  <% if @quest.errors.any? %>
+    <% @quest.errors.full_messages.each do |message| %>
+      <h2><%= message %></h2>
+      <% end %>
+  <% end %>
   <%= f.label :title, "標題" %><br />
   <%= f.text_field :title %> <br />
 
