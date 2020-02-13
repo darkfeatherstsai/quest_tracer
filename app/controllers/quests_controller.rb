@@ -31,7 +31,7 @@ class QuestsController < ApplicationController
     if @quest.update(quest_params)
       redirect_to quests_path, notice: "任務更新成功！"
     else
-      render :new
+      render :edit
     end
   end
 

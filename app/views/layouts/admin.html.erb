@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuestTracer</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h1>歡迎使用 QuestTracer admin</h1>
+    <% if current_user %>
+    <h2>
+      <%= "hi,#{current_user.name}"  %> <%= link_to t('logout'), logout_path, method: :delete %>
+    </h2>
+    <% end %>
+    <hr>
+    <%= yield %>
+    <hr>
+  </body>
+</html>
