@@ -1,10 +1,11 @@
 class QuestsController < ApplicationController
   before_action :find_quest, only: [:edit, :update, :destroy]
+  before_action :check_login
 
   def index
     @q = Quest.ransack(params[:q])
-    quests = @q.result
-    @quests = quests.paginate(:page => params[:page] , :per_page => 15)
+    quests = @q.result.ransack(user_id_eq: current_user.id)
+    @quests = quests.result.paginate(:page => params[:page] , :per_page => 15)
   end
 
   def new
@@ -13,6 +14,7 @@ class QuestsController < ApplicationController
 
   def create
     @quest = Quest.new(quest_params)
+    @quest.user_id = current_user.id
 
     if @quest.save
       redirect_to quests_path, notice: "任務新增成功！"
@@ -37,9 +39,10 @@ class QuestsController < ApplicationController
     @quest.destroy if @quest
     redirect_to quests_path, notice: "任務已刪除！"
   end
+
   private
   def quest_params
-    params.require(:quest).permit(:title, :content, :start_date, :end_date, :priority, :state)
+    params.require(:quest).permit(:title, :content, :start_date, :end_date, :priority, :state, :user_id)
   end
 
   def find_quest

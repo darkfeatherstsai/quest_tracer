@@ -45,6 +45,8 @@ gem 'ransack'
 #分頁用
 gem "will_paginate"
 gem 'kaminari'
+#加密用
+gem 'bcrypt'
 
 
 

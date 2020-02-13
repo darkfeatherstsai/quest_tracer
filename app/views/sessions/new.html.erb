@@ -1,0 +1,13 @@
+<h1>請先登入</h1>
+<%= form_tag login_path, method: :post do %>
+<div>
+  <%= label_tag :email, "電子信箱" %>
+  <%= text_field_tag :email %>
+</div>
+<div>
+  <%= label_tag :password, "密碼" %>
+  <%= password_field_tag :password %>
+</div>
+  <%= submit_tag '登入' %>
+  <h3>新朋友請點此<%= link_to '註冊', signup_path %></h3>
+<%end%>

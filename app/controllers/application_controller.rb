@@ -9,4 +9,17 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = session[:locale] || I18n.default_locale
   end
+
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def check_login
+    unless current_user
+      flash[:warning] = '請先登入'
+      redirect_to login_path
+    end
+  end
 end

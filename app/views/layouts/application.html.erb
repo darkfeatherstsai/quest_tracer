@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <h1>歡迎使用 QuestTracer</h1>
+    <% if current_user %>
+    <h2>
+      <%= "hi,#{current_user.name}"  %> <%= link_to t('logout'), logout_path, method: :delete %>
+    </h2>
+    <% end %>
+    <hr>
     <%= yield %>
+    <hr>
   </body>
 </html>
