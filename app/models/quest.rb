@@ -1,4 +1,5 @@
 class Quest < ApplicationRecord
+  serialize :tags, Array
   validate :quest_validator
 
   private

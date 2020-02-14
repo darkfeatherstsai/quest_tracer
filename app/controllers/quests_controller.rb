@@ -15,7 +15,6 @@ class QuestsController < ApplicationController
   def create
     @quest = Quest.new(quest_params)
     @quest.user_id = current_user.id
-
     if @quest.save
       redirect_to quests_path, notice: "任務新增成功！"
     else
@@ -42,7 +41,9 @@ class QuestsController < ApplicationController
 
   private
   def quest_params
-    params.require(:quest).permit(:title, :content, :start_date, :end_date, :priority, :state, :user_id)
+    data = params.require(:quest).permit(:title, :content, :tags, :start_date, :end_date, :priority, :state, :user_id)
+    data[:tags] = data[:tags].split(',')
+    return data
   end
 
   def find_quest
