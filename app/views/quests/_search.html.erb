@@ -1,5 +1,5 @@
-<h2>搜尋</h2>
-<%= search_form_for @q do |f| %>
+<h2>搜尋
+  <%= search_form_for @q do |f| %>
   <%= f.label :標題： %>
   <%= f.search_field :title_cont %>
 
@@ -8,3 +8,4 @@
 
   <%= f.submit :search %>
 <% end %>
+</h2>

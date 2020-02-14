@@ -1,5 +1,19 @@
-<h1>任務清單</h1>
-
+<style>
+	.demo {
+		border:1px solid #F8E6FB;
+		border-collapse:collapse;
+		padding:5px;
+	}
+	.demo th {
+		border:1px solid #C0C0C0;
+		padding:5px;
+		background:#F0F0F0;
+	}
+	.demo td {
+		border:1px solid #C0C0C0;
+		padding:5px;
+	}
+</style>
 <%= render 'search' %>
 <h2><%= sort_link(@q, :start_date, '依開始時間排序', default_order: :desc) %>
      <%= sort_link(@q, :end_date, '依結束時間排序', default_order: :desc) %>
@@ -10,8 +24,8 @@
 
 <hr>
 
-<%= paginate @quests %>
-<table>
+
+<table class="demo">
   <thead>
     <tr>
       <td>標題</td>
@@ -45,5 +59,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= paginate @quests %>

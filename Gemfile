@@ -47,6 +47,10 @@ gem "will_paginate"
 gem 'kaminari'
 #加密用
 gem 'bcrypt'
+#bootstrap
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'
 
 
 
