@@ -1,0 +1,28 @@
+<%= form_for(quest) do |f| %>
+  <% if @quest.errors.any? %>
+    <% @quest.errors.full_messages.each do |message| %>
+      <h2><%= message %></h2>
+      <% end %>
+  <% end %>
+  <%= f.label :title, "標題" %><br />
+  <%= f.text_field :title %> <br />
+
+  <%= f.label :content, "內容" %><br />
+  <%= f.text_area :content, size: "30x5" %> <br />
+
+  <%= f.label :tags, "標籤" %><br />
+  <%= f.text_field :tags %> <br />
+
+  <%= f.label :start_date, "開始時間" %>
+  <%= f.datetime_select :start_date %> <br />
+
+  <%= f.label :end_date, "結束時間" %>
+  <%= f.datetime_select :end_date %> <br />
+
+  <%= f.label :priority, "優先度" %>
+  <%= f.select :priority,[0,1,2] %> <br />
+
+  <%= f.label :state, "狀態" %>
+  <%= f.select :state,[0,1,2] %> <br />
+  <%= f.submit %>
+<% end %>

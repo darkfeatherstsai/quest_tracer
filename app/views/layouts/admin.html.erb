@@ -10,23 +10,14 @@
   </head>
 
   <body>
-
-    <h1>歡迎使用 QuestTracer</h1>
+    <h1>歡迎使用 QuestTracer admin</h1>
     <% if current_user %>
     <h2>
       <%= "hi,#{current_user.name}"  %> <%= link_to t('logout'), logout_path, method: :delete %>
     </h2>
-    <%= notice %>
     <% end %>
-    <h2> <%= link_to "任務清單" , root_path %> </h2>
     <hr>
-    <%= paginate @quests if @quests %>
+    <%= yield %>
     <hr>
-      <%= yield %>
-    <hr>
-    <%= paginate @quests if @quests %>
-    <hr>
-
-
   </body>
 </html>

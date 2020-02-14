@@ -1,0 +1,17 @@
+#database.travis.yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: quest_tracer_development
+
+test:
+  <<: *default
+  database: quest_tracer_test
+
+production:
+  <<: *default
+  database: ryantsai

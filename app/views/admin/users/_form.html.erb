@@ -1,0 +1,17 @@
+<%= form_for([:admin, @user]) do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <h2><%= message %></h2>
+      <% end %>
+  <% end %>
+  <%= f.label :name, "名子：" %>
+  <%= f.text_field :name %> <br />
+
+  <%= f.label :email, "電子郵件：" %>
+  <%= f.text_field :email %> <br />
+
+  <%= f.label :authority, "權限：" %>
+  <%= f.select :authority,[0,1] %> <br />
+
+  <%= f.submit %>
+<% end %>

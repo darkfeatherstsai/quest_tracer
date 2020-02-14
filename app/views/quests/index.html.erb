@@ -1,0 +1,61 @@
+<style>
+	.demo {
+		border:1px solid #F8E6FB;
+		border-collapse:collapse;
+		padding:5px;
+	}
+	.demo th {
+		border:1px solid #C0C0C0;
+		padding:5px;
+		background:#F0F0F0;
+	}
+	.demo td {
+		border:1px solid #C0C0C0;
+		padding:5px;
+	}
+</style>
+<%= render 'search' %>
+<h2><%= sort_link(@q, :start_date, '依開始時間排序', default_order: :desc) %>
+     <%= sort_link(@q, :end_date, '依結束時間排序', default_order: :desc) %>
+      <%= sort_link(@q, :priority, '依優先度排序', default_order: :desc) %></h2>
+<h4>
+  <%= link_to "新增任務", new_quest_path %>
+</h4>
+
+<hr>
+
+
+<table class="demo">
+  <thead>
+    <tr>
+      <td>標題</td>
+      <td>內容</td>
+      <td>開始日期</td>
+      <td>結束日期</td>
+      <td>優先度</td>
+      <td>狀態</td>
+      <td>Tags</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @quests.each do |quest| %>
+    <tr>
+      <td><%= quest.title %></td>
+      <td><%= quest.content %></td>
+      <td><%= quest.start_date %></td>
+      <td><%= quest.end_date %></td>
+      <td><%= quest.priority %></td>
+      <td><% if quest.state == 0 %>"待處理"
+          <% elsif quest.state == 1 %>"進行中"
+          <% else %>"已完成"
+          <% end %>
+      </td>
+      <td><%= quest.tags %></td>
+      <td>
+        <%= link_to "任務編輯", edit_quest_path(quest) %>
+        <%= link_to "任務刪除", quest_path(quest), method: "delete", data: { confirm: "確認刪除" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
